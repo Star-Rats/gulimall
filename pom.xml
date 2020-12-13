@@ -16,6 +16,8 @@
         <module>gulimall-product</module>
         <module>gulimall-ware</module>
         <module>gulimall-admin</module>
+        <module>gulimall-generator</module>
+        <module>gulimall-commom</module>
     </modules>
 
 </project>
