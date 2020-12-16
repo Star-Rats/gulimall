@@ -32,8 +32,20 @@ spring:
                 wall:
                     config:
                         multi-statement-allow: true
+    application:
+        name: gulimall-admin
+    cloud:
+        nacos:
+            server-addr: 192.168.52.1:8848
+            discovery:
+                server-addr: ${spring.cloud.nacos.server-addr}
 
-
+# 暴露所有web端点
+management:
+    endpoints:
+        web:
+            exposure:
+                include=*:
 ##多数据源的配置
 #dynamic:
 #  datasource:

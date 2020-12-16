@@ -1,11 +1,11 @@
 server:
-  port: 9005
+  port: 9006
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://192.168.43.128:3306/gulimall_pms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      url: jdbc:mysql://192.168.43.128:3306/gulimall_wms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
       username: root
       password: root
       initial-size: 10
@@ -35,11 +35,11 @@ spring:
           config:
             multi-statement-allow: true
   application:
-    name: gulimall-product
+    name: gulimall-ware
   cloud:
-    nacos:
-      server-addr: 192.168.52.1:8848
-      discovery:
+     nacos:
+       server-addr: 192.168.52.1:8848
+       discovery:
         server-addr: ${spring.cloud.nacos.server-addr}
 
 # 暴露所有web端点
