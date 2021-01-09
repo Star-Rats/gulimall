@@ -1,0 +1,26 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: gulimall-gateway
+  cloud:
+    nacos:
+      server-addr: 192.168.52.1:8848
+      discovery:
+       server-addr: ${spring.cloud.nacos.server-addr}
+
+
+    gateway:
+      routes:
+        - id: query_route
+          uri: http://www.jiangmingyang.com
+          predicates:
+            - Query=name
+
+        - id: admin_path_route
+          uri: lb://admin
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*),/admin/$\{segment}
