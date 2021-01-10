@@ -8,7 +8,7 @@ spring:
     nacos:
       server-addr: 192.168.52.1:8848
       discovery:
-       server-addr: ${spring.cloud.nacos.server-addr}
+        server-addr: ${spring.cloud.nacos.server-addr}
 
 
     gateway:
@@ -18,8 +18,15 @@ spring:
           predicates:
             - Query=name
 
+        - id: product_path_route
+          uri: lb://gulimall-product
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/(?<segment>/?.*),/product/$\{segment}
+
         - id: admin_path_route
-          uri: lb://admin
+          uri: lb://gulimall-admin
           predicates:
             - Path=/api/**
           filters:

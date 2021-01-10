@@ -46,7 +46,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
     private List<CategoryEntity> listChildren(CategoryEntity category,List<CategoryEntity> cs){
         // 递归查找子分类
         return cs.stream()
-                .filter(entity -> entity.getParentCid().equals(category.getCatId()))
+                .filter(entity -> null != entity.getParentCid() && entity.getParentCid().equals(category.getCatId()))
                 .peek(c -> c.setChildren(this.listChildren(c,cs)))
                 .sorted(Comparator.comparing(CategoryEntity::getSort))
                 .collect(Collectors.toList());
